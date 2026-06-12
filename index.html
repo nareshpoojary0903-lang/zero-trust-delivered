@@ -365,6 +365,14 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
 .fwaas-item{background:var(--slate);border-radius:var(--radius);padding:16px 18px;border-left:3px solid var(--blue);}
 .fwaas-item h4{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px;}
 .fwaas-item p{font-size:13.5px;color:var(--text-light);margin-bottom:0;line-height:1.55;}
+.access-tier-grid{display:grid;grid-template-columns:1fr;gap:18px;margin:24px 0;}
+.access-tier-card{background:var(--white);border:1px solid var(--grey-rule);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-sm);}
+.access-tier-card .tier-header{display:flex;align-items:center;gap:14px;background:var(--navy);padding:14px 22px;}
+.access-tier-card .tier-num{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:0.1em;color:var(--white);background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:20px;}
+.access-tier-card .tier-title{font-size:15px;font-weight:600;color:var(--white);}
+.access-tier-card .tier-body{padding:18px 22px;}
+.access-tier-card .tier-body p{font-size:13.5px;color:var(--text-light);line-height:1.65;margin-bottom:10px;}
+.access-tier-card .tier-body p:last-child{margin-bottom:0;}
 .backbone-box{background:var(--teal-bg);border:1px solid var(--teal-rule);border-left:4px solid var(--teal);border-radius:var(--radius-lg);padding:22px 26px;margin:24px 0;}
 .bb-label{font-size:11px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;}
 .backbone-box p{font-size:14.5px;color:#1A4A4A;margin-bottom:10px;line-height:1.68;}
@@ -760,30 +768,46 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
 <body>
 
 <!-- COVER PAGE -->
-<div class="cover-page">
-  <div class="cover-inner">
-    <div class="cover-guide-label">
-      <span class="guide-tag">Practitioner Guide</span>
-      <span class="guide-edition">Security Architecture Series</span>
+<div class="cover-page" style="min-height:100vh;background:#F5F4F2;display:flex;flex-direction:column;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:0;width:8px;height:100%;background:#f0a150;"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:100%;background:linear-gradient(135deg,transparent 60%,rgba(27,58,92,0.04) 100%);pointer-events:none;"></div>
+  <div class="cover-inner" style="position:relative;z-index:1;padding:72px 72px 0 80px;display:flex;flex-direction:column;min-height:100vh;">
+    <div style="margin-bottom:56px;">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#f0a150;border:1px solid #f0a150;padding:4px 12px;border-radius:3px;">Practitioner Guide</span>
     </div>
-    <div class="cover-main">
-      <div class="cover-eyebrow">Zero Trust · SASE · SSE</div>
-      <div class="cover-title">Zero Trust,<br><span class="accent">Delivered</span></div>
-      <div class="cover-subtitle">A Practitioner's Guide to SASE as Your Implementation Engine</div>
-      <div class="cover-tagline">For security teams in mid-size organisations who carry architecture, deployment, and board reporting as a single function — and need a framework that works in practice, not just in principle.</div>
-      <div class="cover-pillars">
-        <span class="cover-pill">Secure Web Gateway</span>
-        <span class="cover-pill">CASB</span>
-        <span class="cover-pill">ZTNA</span>
-        <span class="cover-pill">FWaaS</span>
-        <span class="cover-pill">RBI</span>
-        <span class="cover-pill">SSE DLP</span>
-        <span class="cover-pill">Vendor Strategy</span>
-        <span class="cover-pill">Governance</span>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#888780;margin-bottom:20px;">Zero Trust · SASE · SSE</div>
+      <div style="font-size:clamp(40px,6vw,68px);font-weight:700;color:#1B3A5C;line-height:1.0;letter-spacing:-0.03em;margin-bottom:6px;">Zero Trust,</div>
+      <div style="font-size:clamp(40px,6vw,68px);font-weight:700;color:#1B3A5C;line-height:1.0;letter-spacing:-0.03em;margin-bottom:16px;">Delivered</div>
+      <div style="width:180px;height:3px;background:#f0a150;margin-bottom:28px;border-radius:2px;"></div>
+      <div style="font-size:clamp(16px,2.2vw,20px);font-weight:400;color:#f0a150;line-height:1.5;margin-bottom:48px;max-width:520px;">A Practitioner&rsquo;s Guide to SASE as Your Implementation Engine</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:64px;">
+        <span style="font-size:11px;color:#888780;border:1px solid #E2E0DC;padding:4px 12px;border-radius:20px;">Secure Web Gateway</span>
+        <span style="font-size:11px;color:#888780;border:1px solid #E2E0DC;padding:4px 12px;border-radius:20px;">CASB</span>
+        <span style="font-size:11px;color:#888780;border:1px solid #E2E0DC;padding:4px 12px;border-radius:20px;">ZTNA</span>
+        <span style="font-size:11px;color:#888780;border:1px solid #E2E0DC;padding:4px 12px;border-radius:20px;">FWaaS</span>
+        <span style="font-size:11px;color:#888780;border:1px solid #E2E0DC;padding:4px 12px;border-radius:20px;">RBI</span>
+        <span style="font-size:11px;color:#888780;border:1px solid #E2E0DC;padding:4px 12px;border-radius:20px;">SSE DLP</span>
+        <span style="font-size:11px;color:#888780;border:1px solid #E2E0DC;padding:4px 12px;border-radius:20px;">Vendor Strategy</span>
+        <span style="font-size:11px;color:#888780;border:1px solid #E2E0DC;padding:4px 12px;border-radius:20px;">Governance</span>
       </div>
-      <div class="cover-disclaimer">
-        <div class="disc-label">Disclaimer</div>
-        <p>This guide serves a head-start purpose. Every organisation's context is different — risk profile, existing investments, application landscape, regulatory obligations, and team capacity all shape the right approach. What follows is a practitioner's framework, not a step-by-step implementation manual. Security professionals must understand their own organisational context and build on this guidance accordingly.</p>
+    </div>
+    <div style="border-top:1px solid #E2E0DC;padding:28px 0 40px;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:24px;">
+        <div>
+          <div style="font-size:14px;font-weight:700;color:#1B3A5C;margin-bottom:4px;">Naresh Padma Poojary</div>
+          <div style="font-size:12px;color:#888780;margin-bottom:2px;">Security Architect</div>
+          <div style="font-size:11px;color:#888780;">CISSP &middot; Cloud Native Security Expert &middot; Certified Threat Modelling Professional</div>
+          <div style="font-size:11px;color:#185FA5;margin-top:6px;">linkedin.com/in/csanareshpoojary</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:10px;color:#888780;margin-bottom:4px;">Full practitioner guide</div>
+          <div style="font-size:10px;color:#185FA5;word-break:break-all;">https://nareshpoojary0903-lang.github.io/zero-trust-delivered/</div>
+        </div>
+      </div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid #E2E0DC;">
+        <div style="font-size:10px;font-weight:600;letter-spacing:0.10em;text-transform:uppercase;color:#888780;margin-bottom:8px;">Disclaimer</div>
+        <p style="font-size:12px;color:#888780;line-height:1.6;margin:0;">This guide serves a head-start purpose. Every organisation&rsquo;s context is different. What follows is a practitioner&rsquo;s framework, not a step-by-step implementation manual.</p>
       </div>
     </div>
   </div>
@@ -798,7 +822,7 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
   </div>
   <div class="section-heading">
     <h1>The Thesis</h1>
-    <p class="subtitle">SASE is the delivery mechanism through which Zero Trust becomes enforceable. This section establishes why — and how this guide demonstrates it.</p>
+    <p class="subtitle">SASE — and specifically its security component, SSE — is one of the most complete delivery mechanisms through which Zero Trust principles become enforceable at scale. This section establishes why — and how this guide demonstrates it.</p>
     <hr class="rule">
   </div>
   <p>Implementing Zero Trust is not primarily a technology decision. It is an architectural decision about how enforcement infrastructure is organised across every access path in the organisation — user to application, device to resource, data to egress. The principle is well established. The challenge is operational: what delivers the Policy Enforcement Point across web traffic, private application access, SaaS usage, site connectivity, and data egress, at the scale and complexity of a real organisation with a real team and real budget constraints?</p>
@@ -815,7 +839,12 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
   <p>The mapping between Zero Trust pillars and SASE components is structural, not incidental. SASE was not designed to be a Zero Trust platform — it was designed to solve the distributed access problem. But the distributed access problem and the Zero Trust enforcement problem are the same problem, described at different layers of abstraction. The components that solve one solve the other.</p>
   <div class="callout blue">
     <div class="callout-label">The central argument</div>
-    <p>SASE is not a product you evaluate as an alternative to doing Zero Trust. It is the delivery mechanism through which Zero Trust becomes enforceable. Treating them as separate programmes — Zero Trust as a strategy workstream, SASE as a network transformation — produces a strategy without an enforcement mechanism and a platform without a governing principle. Neither delivers what was promised. Closing that gap is what this guide is about.</p>
+    <p>SASE is not a product you evaluate as an alternative to doing Zero Trust. It is one of the most complete delivery mechanisms through which Zero Trust principles become enforceable at scale. Treating them as separate programmes — Zero Trust as a strategy workstream, SASE as a network transformation — produces a strategy without an enforcement mechanism and a platform without a governing principle. Neither delivers what was promised. Closing that gap is what this guide is about.</p>
+  </div>
+  <div class="callout teal">
+    <div class="callout-label">Defined term — Surface</div>
+    <p><strong>Surface</strong> refers to the set of access paths, data channels, and interaction points through which an adversary could gain unauthorised access, exfiltrate data, or cause harm. The term derives from <em>attack surface</em> — the sum of all points where an attacker can attempt to enter or extract data from an environment.</p>
+    <p>In Zero Trust architecture, each SSE control governs a specific surface: SWG governs the internet access surface, ZTNA governs the private application access surface, CASB governs the SaaS surface. As environments expand — OT/IoT, cloud workloads, AI agents — new surfaces emerge requiring deliberate governance. This term is used throughout the guide.</p>
   </div>
   <div class="signal-principle">
     <div class="sp-label">A foundational principle — carried through every section of this guide</div>
@@ -877,7 +906,7 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
   <p><strong>Process and Workload.</strong> Running processes — service accounts, automated pipelines, scheduled tasks, and increasingly autonomous AI agents — access resources exactly as users do. They require the same verification discipline. ZTNA can scope workload access to specific applications. Full workload identity enforcement, however, extends beyond SSE into cloud-native identity and access management controls. This guide addresses the SSE layer; the workload identity layer is acknowledged where it intersects, and addressed directly in Section 10.</p>
   <p><strong>SD-WAN and OT/IoT.</strong> SD-WAN is the network layer of full SASE — the component that enforces connectivity and segmentation policy at the site level, including environments with OT and IoT device populations that cannot run software agents. For most mid-size organisations, SSE-first is the correct and sufficient entry point. SD-WAN becomes a current programme requirement when specific trigger conditions are present — identified through the existing investment audit in Section 2.</p>
   <h2>Who This Guide Is For</h2>
-  <p>This guide is primarily written for security teams in a mid-size organisation who carry architecture, deployment, and board reporting as a single function — responsible for the whole picture, with real budget constraints, regulatory exposure, and a team that must operate whatever gets built.</p>
+  <p>Security architects, CISOs, and programme leads working through Zero Trust implementation decisions.</p>
   <p>That said, the content is not exclusive to that context. A security architect in a larger organisation evaluating SASE adoption will find the component analysis, the existing investment audit, and the vendor strategy sections directly applicable. A consulting practitioner advising clients on SSE deployment will find the displacement signal framework and the implementation sequence useful across engagements of varying scale. The guide is written from a mid-size perspective because that context imposes the most useful constraints — lean teams, proportionate controls, and the discipline of deploying what is genuinely needed rather than what is theoretically complete.</p>
   <p>At this scale, operational simplicity is a security outcome, not a preference. A unified platform the team can fully understand, tune, and respond to during incidents is more resilient than a best-of-breed stack that exceeds the team's operational capacity. This guide reflects that reality consistently — in the component sections, in the implementation sequence, and in the vendor strategy discussion.</p>
   <p>The guide is structured in the following sequence:</p>
@@ -1398,6 +1427,13 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
   <p>The distinction matters practically. A user who authenticates to a corporate Microsoft 365 tenant, accesses a SharePoint document library, and shares its contents externally has passed through every SWG control with no violation. The SWG saw a valid authenticated session to a permitted SaaS destination and allowed it. CASB sees the sharing action within the application — and that is where the governance failure occurs if CASB is not in place.</p>
   <h2>Two Deployment Models: Inline and API</h2>
   <p>CASB operates in two distinct modes that address different risk surfaces and require different deployment architectures. Most production CASB deployments use both — they are complementary, not alternatives.</p>
+
+  <div class="callout amber">
+    <div class="callout-label">Licensing reality — this changes the deployment question</div>
+    <p>Inline CASB is bundled into the SSE platform licence at every major vendor. Zscaler: inline CASB mode requires ZIA, which most organisations already hold. Netskope: the SSE tier includes SWG, CASB inline, and basic DLP as a single bundle. The inline CASB capability is active in the platform from day one — the deployment decision is policy configuration (tenant restriction, shadow IT discovery, upload controls), not procurement.</p>
+    <p>API-mode CASB, SSPM (SaaS Security Posture Management), and deeper SaaS governance modules are separately licensed — and the pricing model matters. Netskope's API CASB is billed per app-seat: one user multiplied by one managed app equals one seat. A 500-user organisation with 5 SaaS apps per user is not paying for 500 seats — it is paying for 2,500. Misunderstanding this model has inflated enterprise budgets by six figures.</p>
+    <p><strong>The question this reframes:</strong> "do we need CASB" is the wrong question — inline CASB is already part of the licence held. The real questions are: are we configuring the inline CASB capability we are already paying for, and does the business case for API-mode CASB / SSPM justify the separate licence and its per-app-seat cost model?</p>
+  </div>
   <div class="compare-grid">
     <div class="compare-card inline">
       <div class="compare-header"><h3>Inline CASB</h3><div class="compare-subtitle">Real-time enforcement · Requires traffic steering</div></div>
@@ -1412,7 +1448,7 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
           <li>Requires SSE agent deployed and traffic steered through SSE platform</li>
         </ul>
       </div>
-      <div class="compare-footer">Dependent on the SWG traffic path — inline CASB and SWG operate within the same enforcement engine in a unified SSE platform.</div>
+      <div class="compare-footer">Dependent on the SWG traffic path — inline CASB and SWG operate within the same enforcement engine in a unified SSE platform. Inline CASB requires traffic to flow through the SSE proxy and cannot govern native application traffic from unmanaged devices. However, reverse proxy (agentless) mode can govern browser-based SaaS sessions on unmanaged devices by intercepting the authentication flow via IdP integration (SAML/OIDC redirect) — without requiring an endpoint agent. API-mode CASB provides retrospective governance of content in the SaaS platform regardless of how it arrived, including from unmanaged devices.</div>
     </div>
     <div class="compare-card api">
       <div class="compare-header"><h3>API CASB</h3><div class="compare-subtitle">Retrospective governance · Direct SaaS API integration</div></div>
@@ -1422,6 +1458,8 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
           <li>Scans data at rest within SaaS applications</li>
           <li>Assesses sharing settings, permissions, and OAuth grants</li>
           <li>Identifies policy violations that occurred before CASB was deployed</li>
+          <li>Sensitive content discovery on data already at rest, using DLP rules — including content uploaded before CASB was deployed</li>
+          <li>Out-of-band policy enforcement — quarantine files, revoke external sharing or access grants retrospectively</li>
           <li>Malware scanning for files stored in corporate SaaS platforms</li>
           <li>Operates independently of traffic steering — can start before SSE agent is deployed</li>
           <li>Covers desktop sync clients and integration paths outside browser sessions</li>
@@ -1757,6 +1795,10 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
       <p>Handles all IP traffic — web and non-web protocols, UDP, ICMP, and application traffic that does not traverse the SWG or ZTNA enforcement path.</p>
     </div>
     <div class="fwaas-item">
+      <h4>Native SSH and RDP coverage</h4>
+      <p>Native SSH (port 22) and RDP (port 3389) traffic from endpoints not configured to proxy these protocols bypasses SWG entirely — SWG is an HTTP/HTTPS inspection engine. Where SSH clients are configured to tunnel over HTTP CONNECT, SWG can govern the destination but cannot inspect the payload. FWaaS is the control that provides network-layer policy for this native protocol traffic — the surface SWG structurally cannot reach.</p>
+    </div>
+    <div class="fwaas-item">
       <h4>Branch and site policy</h4>
       <p>Enforces consistent security policy for traffic originating from branch offices and physical sites — without requiring local firewall appliances at each location.</p>
     </div>
@@ -1960,6 +2002,11 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
     </div>
   </div>
 
+  <div class="callout teal">
+    <div class="callout-label">RBI defined precisely</div>
+    <p>RBI is the policy action SWG applies to risky or unclassified destinations where a direct permit is too permissive and a block is too restrictive — the session is isolated in a cloud container rather than permitted or blocked outright. It is neither "allow" nor "deny": it is a third enforcement outcome that lets the user reach the destination while containing what that destination can do to the endpoint.</p>
+  </div>
+
   <p>RBI is a resource-intensive control. Each isolated session requires a cloud container with rendering compute and streaming bandwidth. The cost scales with concurrent active sessions, not with the number of licensed users. This is why condition-triggered deployment — scoped to uncategorised destinations, specific high-risk categories, or defined access patterns — is the operationally sound model.</p>
 
   <div class="callout amber">
@@ -1968,32 +2015,72 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
     <p>Advanced RBI features — maximum isolation fidelity through pixel-pushing for all sessions, unlimited concurrent sessions, full inline DLP within isolated sessions — may require a higher license tier or add-on. Evaluate these against the specific use case that requires them.</p>
   </div>
 
-  <h2>Why RBI Is the Right Access Model for Contractors and Third Parties</h2>
+  <h2>Access Architecture for Unmanaged Devices and Third Parties</h2>
 
-  <p>A question that arises naturally when browser security controls are discussed for contractor and third-party access is whether an enterprise browser — a managed browser application or extension with corporate policy enforcement — addresses that population. The practical answer is that it does not, in the general case.</p>
+  <p>The question that arises naturally when contractor and third-party access is discussed is not "how do we isolate risky browsing" — it is "how do contractors and third parties access corporate systems at all." RBI answers the first question. It does not answer the second. Treating RBI as the access model for contractors conflates session isolation with access architecture — two different mechanisms that solve two different problems.</p>
 
-  <p>An enterprise browser requires installation on the endpoint. For a contractor working on a device owned and managed by their own employer, installation of enterprise software raises immediate and legitimate obstacles. The device belongs to another organisation. That organisation's IT policy may explicitly prohibit installation of third-party managed software. The contractor may lack administrative rights. And even where installation is technically possible, the contractor's employer must consent to a third party deploying managed, policy-enforced software on hardware they own and are responsible for. In practice, many organisations will decline that request.</p>
+  <p>The correct framework recognises that contractor and third-party access requirements fall into three distinct tiers, depending on the device available and the type of access required. Each tier has a different solution. RBI appears within all three — as a complement governing internet browsing risk, not as the primary access model for any of them.</p>
 
-  <p>There is a more fundamental concern beyond installation logistics. An enterprise browser with session monitoring, DLP, and policy enforcement has visibility into activity within that browser. If the contractor uses the same browser for both the engagement with the hiring organisation and their own employer's work — or other client engagements — the monitoring scope extends beyond the intended boundary. This is a legal and contractual exposure for the deploying organisation, and a legitimate reason for a contractor's employer to refuse consent.</p>
-
-  <div class="privacy-compare">
-    <div class="privacy-card rbi">
-      <div class="privacy-card-header">RBI — privacy boundary for contractor access</div>
-      <div class="privacy-card-body">
-        <p>The container executes the session. The hiring organisation has visibility into what happens inside the container — the sites accessed, data transfers attempted, application interactions within the session. The contractor's device is entirely outside the visibility boundary. No installation required on the contractor's device. The contractor's own employer has nothing to consent to.</p>
+  <div class="access-tier-grid">
+    <div class="access-tier-card">
+      <div class="tier-header">
+        <div class="tier-num">Tier 1</div>
+        <div class="tier-title">Corporate managed device</div>
+      </div>
+      <div class="tier-body">
+        <p>The contractor is issued a corporate-managed device. Full SSE agent deployment. Same access architecture as an employee — inline ZTNA, SWG, and CASB coverage apply without modification.</p>
+        <p><strong>Appropriate for:</strong> longer-term contractors with broad application access requirements, contractors handling regulated data, and engagements where BYOD would create compliance exposure.</p>
+        <p><strong>Limitation:</strong> issuing a managed device is not always possible — short-term vendor support, international consultants, and emergency access scenarios are where Tiers 2 and 3 apply.</p>
       </div>
     </div>
-    <div class="privacy-card eb">
-      <div class="privacy-card-header">Enterprise browser — why it does not fit the contractor model</div>
-      <div class="privacy-card-body">
-        <p>The managed browser runs on the contractor's device. The hiring organisation's policy enforcement has visibility into activity within that browser. If the same browser is used for multiple purposes, that visibility extends beyond the intended scope. Requires installation on a device the hiring organisation does not own, and consent from an organisation with its own IT governance obligations.</p>
+    <div class="access-tier-card">
+      <div class="tier-header">
+        <div class="tier-num">Tier 2</div>
+        <div class="tier-title">Unmanaged device — clientless ZTNA</div>
+      </div>
+      <div class="tier-body">
+        <p>The primary solution for interactive application access from an unmanaged device. Browser-based ZTNA provides access to specific authorised HTTP/HTTPS applications, RDP, and SSH through a secure portal — no agent installation required.</p>
+        <p>The contractor authenticates via SSO to the ZTNA portal. The IdP enforces MFA and session policy. The platform grants access to named applications only — not network access. The application is never directly internet-exposed.</p>
+        <p><strong>Vendor implementations:</strong> Netskope Clientless Access (HTTP/HTTPS, RDP, SSH via browser portal); Zscaler ZPA Browser Access (authorised web applications, any browser, no ZCC required); Palo Alto Prisma Access Browser Access (HTTP/HTTPS private apps, no GlobalProtect agent).</p>
+        <p><strong>Provides:</strong> interactive access, identity-based access control, application-level least-privilege, no network access. <strong>Does not provide:</strong> native protocol coverage beyond what the browser delivers, device posture signals — the device is unmanaged, so there is no MDM compliance reporting.</p>
+      </div>
+    </div>
+    <div class="access-tier-card">
+      <div class="tier-header">
+        <div class="tier-num">Tier 3</div>
+        <div class="tier-title">Unmanaged device — privileged access</div>
+      </div>
+      <div class="tier-body">
+        <p>For vendor administrators, support personnel, and contractors requiring RDP, SSH, or VNC access to sensitive servers, OT environments, or critical infrastructure. A distinct requirement from Tier 2 — privileged sessions require recording, credential vaulting, and just-in-time provisioning that standard clientless ZTNA does not provide.</p>
+        <p><strong>Vendor implementations:</strong> Zscaler Privileged Remote Access (PRA) — clientless RDP/SSH/VNC gateway access to sensitive servers or OT environments, with session recording and credential injection so the contractor never sees the real server credentials; Netskope clientless SSH/RDP within the browser portal; CyberArk Privileged Access Manager and BeyondTrust Remote Support for deeper PAM requirements that sit in the dedicated PAM category rather than general ZTNA.</p>
+        <p><strong>The distinction from Tier 2:</strong> privileged access requires session recording, credential vaulting, and approval workflows. Zscaler PRA and CyberArk are PAM-category tools, not general-purpose clientless ZTNA — they solve a different problem at a higher trust requirement.</p>
       </div>
     </div>
   </div>
 
-  <p>RBI requires nothing on the contractor's device. The contractor opens their existing browser, authenticates through the IdP, and the session executes in the cloud container. For third-party access to higher-sensitivity applications where the application portal's thinner enforcement is insufficient, RBI is the appropriate answer.</p>
+  <h3>Where RBI fits</h3>
 
-  <h2>What RBI Cannot Do</h2>
+  <p>RBI is not an access model — it is a session isolation mechanism. It applies <em>within</em> any of the three tiers above when a contractor browses internet destinations as part of their work — research, unsanctioned SaaS, or unknown sites. A Tier 2 contractor accessing an authorised application via clientless ZTNA does so with direct, identity-governed access. If that same contractor also browses external websites during their engagement, those browsing sessions can be RBI-isolated. RBI governs the internet browsing risk profile within a tier — it does not substitute for the access architecture the tier provides.</p>
+
+  <div class="privacy-compare">
+    <div class="privacy-card rbi">
+      <div class="privacy-card-header">RBI — privacy boundary for contractor browsing</div>
+      <div class="privacy-card-body">
+        <p>The container executes the browsing session. The hiring organisation has visibility into what happens inside the container — the sites accessed, data transfers attempted, application interactions within the session. The contractor's device is entirely outside the visibility boundary. No installation required on the contractor's device. The contractor's own employer has nothing to consent to.</p>
+      </div>
+    </div>
+    <div class="privacy-card eb">
+      <div class="privacy-card-header">Enterprise browser — why it does not fit the unmanaged device population</div>
+      <div class="privacy-card-body">
+        <p>The managed browser runs on the contractor's device. The hiring organisation's policy enforcement has visibility into activity within that browser. If the same browser is used for multiple purposes — other clients, the contractor's own employer's work — that visibility extends beyond the intended scope. Requires installation on a device the hiring organisation does not own, and consent from an organisation with its own IT governance obligations. For Tier 2 and Tier 3 populations, this consent requirement is frequently declined.</p>
+      </div>
+    </div>
+  </div>
+
+  <p>For a Tier 1 contractor on a corporate managed device, enterprise browser controls apply as they do for any employee — the device is owned by the organisation enforcing policy, and the consent question does not arise. The privacy boundary distinction above is specific to Tiers 2 and 3, where the device belongs to someone else.</p>
+
+  
+<h2>What RBI Cannot Do</h2>
 
   <ul class="boundary-list">
     <li>
@@ -2170,13 +2257,13 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
     </div>
     <div class="mechanism-row">
       <div class="mech-cell name">Pattern matching</div>
-      <div class="mech-cell">Structured sensitive data patterns — credit card numbers, national identification numbers, account numbers, specific regulated data formats defined by regex. Deterministic detection with low false-positive rate for well-defined patterns.</div>
+      <div class="mech-cell">Structured sensitive data patterns — credit card numbers, national identification numbers, account numbers, specific regulated data formats defined by regex. For PAN and account number patterns specifically, this mechanism generates a high false-positive rate — internal reference numbers, test data, and legacy identifiers routinely match the same structural rules as real sensitive data. Alert-only tuning is mandatory; EDM (below) is the precision layer that resolves the false-positive volume for structured data.</div>
       <div class="mech-cell"><span class="prereq-tag prereq-none">None</span></div>
-      <div class="mech-cell"><div class="maturity-bar"><div class="maturity-fill fill-low"></div></div><div class="mat-label">Deploy now</div></div>
+      <div class="mech-cell"><div class="maturity-bar"><div class="maturity-fill fill-low"></div></div><div class="mat-label">Deploy now (alert-only)</div></div>
     </div>
     <div class="mechanism-row">
       <div class="mech-cell name">Exact Data Match / Document fingerprinting</div>
-      <div class="mech-cell">Specific known sensitive datasets and documents — customer records fingerprinted from a database, known contracts registered with the DLP engine. Detects exact matches of registered data in outbound traffic. Significantly reduces false positives for structured sensitive data compared to pattern matching alone.</div>
+      <div class="mech-cell">Specific known sensitive datasets and documents — customer records fingerprinted from a database, known contracts registered with the DLP engine. Detects exact matches of registered data in outbound traffic. Plays two roles: detection for previously unknown sensitive datasets (Stage 1b), and the precision fine-tuning layer that resolves the high false-positive volume pattern matching generates for structured data such as PAN and account numbers.</div>
       <div class="mech-cell"><span class="prereq-tag prereq-medium">Data inventory</span></div>
       <div class="mech-cell"><div class="maturity-bar"><div class="maturity-fill fill-medium"></div></div><div class="mat-label">Stage 1b</div></div>
     </div>
@@ -2602,6 +2689,11 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
 
   <p>Each major SASE platform has a founding architectural philosophy — a dominant risk domain that shaped their original product design, where their engineering investment is deepest, and how their roadmap is sequenced. That philosophy shapes how well they fit a given organisation's dominant risk domain.</p>
 
+  <div class="callout teal">
+    <div class="callout-label">A vendor can hold more than one philosophy</div>
+    <p>Most mature vendors have developed credible capability across multiple philosophical dimensions — founding philosophy indicates where the deepest investment lies, not where coverage ends. Palo Alto Prisma Access is Platform-first by consolidation strategy but also Access-first through its PAN-OS proxy heritage. Cloudflare One is Edge-first through PoP density but also Access-first through Cloudflare Access's granular per-request ZTNA model. Netskope is Data-first by origin but has built a competitive Access-first ZTNA capability. Zscaler is Edge-first through its PoP network but Access-first through ZPA's granular per-application, per-session policy. Treat the four philosophies as a map of where engineering depth concentrates — not as an exclusive category a vendor occupies alone.</p>
+  </div>
+
     <div class="diagram-container">
     <div class="diagram-caption">Diagram — SASE vendor philosophy map: four architectural entry points <span class="diagram-section-ref">Section 09</span></div>
     <div class="mxgraph" style="max-width:100%;border:1px solid var(--grey-rule);border-radius:var(--radius);overflow:hidden;" data-mxgraph="{&quot;highlight&quot;: &quot;#0000ff&quot;, &quot;nav&quot;: false, &quot;resize&quot;: true, &quot;toolbar&quot;: null, &quot;xml&quot;: &quot;<mxGraphModel dx=\&quot;2439\&quot; dy=\&quot;691\&quot; grid=\&quot;1\&quot; gridSize=\&quot;10\&quot; guides=\&quot;1\&quot; tooltips=\&quot;1\&quot; connect=\&quot;1\&quot; arrows=\&quot;1\&quot; fold=\&quot;1\&quot; page=\&quot;1\&quot; pageScale=\&quot;1\&quot; pageWidth=\&quot;960\&quot; pageHeight=\&quot;760\&quot; math=\&quot;0\&quot; shadow=\&quot;0\&quot;>\n      <root>\n        <mxCell id=\&quot;0\&quot; />\n        <mxCell id=\&quot;1\&quot; parent=\&quot;0\&quot; />\n        <mxCell id=\&quot;title\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=14;fontStyle=1;fontColor=#111111;\&quot; value=\&quot;Section 9 \u2014 SASE vendor philosophy map\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;22\&quot; width=\&quot;560\&quot; x=\&quot;80\&quot; y=\&quot;14\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;subtitle\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;fontColor=#666666;fontStyle=2;\&quot; value=\&quot;Where a vendor's founding philosophy lives predicts where their deepest capability is \u2014 not where capability is absent\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;16\&quot; width=\&quot;720\&quot; x=\&quot;80\&quot; y=\&quot;36\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;matrix-bg\&quot; parent=\&quot;1\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;fillColor=#f7f7f7;strokeColor=#cccccc;strokeWidth=1;arcSize=0;\&quot; value=\&quot;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;530\&quot; width=\&quot;720\&quot; x=\&quot;80\&quot; y=\&quot;80\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;axis-h\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; style=\&quot;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.5;\&quot; value=\&quot;\&quot;>\n          <mxGeometry height=\&quot;10\&quot; width=\&quot;10\&quot; x=\&quot;80\&quot; y=\&quot;345\&quot; as=\&quot;geometry\&quot;>\n            <mxPoint x=\&quot;80\&quot; y=\&quot;345\&quot; as=\&quot;sourcePoint\&quot; />\n            <mxPoint x=\&quot;800\&quot; y=\&quot;345\&quot; as=\&quot;targetPoint\&quot; />\n          </mxGeometry>\n        </mxCell>\n        <mxCell id=\&quot;axis-v\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; style=\&quot;endArrow=none;startArrow=none;strokeColor=#333333;strokeWidth=1.5;\&quot; value=\&quot;\&quot;>\n          <mxGeometry height=\&quot;10\&quot; width=\&quot;10\&quot; x=\&quot;440\&quot; y=\&quot;80\&quot; as=\&quot;geometry\&quot;>\n            <mxPoint x=\&quot;440\&quot; y=\&quot;80\&quot; as=\&quot;sourcePoint\&quot; />\n            <mxPoint x=\&quot;440\&quot; y=\&quot;610\&quot; as=\&quot;targetPoint\&quot; />\n          </mxGeometry>\n        </mxCell>\n        <mxCell id=\&quot;axis-h-left\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; style=\&quot;endArrow=open;endSize=6;strokeColor=#333333;strokeWidth=1.5;endFill=0;\&quot; value=\&quot;\&quot;>\n          <mxGeometry height=\&quot;10\&quot; width=\&quot;10\&quot; x=\&quot;120\&quot; y=\&quot;345\&quot; as=\&quot;geometry\&quot;>\n            <mxPoint x=\&quot;120\&quot; y=\&quot;345\&quot; as=\&quot;sourcePoint\&quot; />\n            <mxPoint x=\&quot;82\&quot; y=\&quot;345\&quot; as=\&quot;targetPoint\&quot; />\n          </mxGeometry>\n        </mxCell>\n        <mxCell id=\&quot;axis-h-right\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; style=\&quot;endArrow=open;endSize=6;strokeColor=#333333;strokeWidth=1.5;endFill=0;\&quot; value=\&quot;\&quot;>\n          <mxGeometry height=\&quot;10\&quot; width=\&quot;10\&quot; x=\&quot;760\&quot; y=\&quot;345\&quot; as=\&quot;geometry\&quot;>\n            <mxPoint x=\&quot;760\&quot; y=\&quot;345\&quot; as=\&quot;sourcePoint\&quot; />\n            <mxPoint x=\&quot;798\&quot; y=\&quot;345\&quot; as=\&quot;targetPoint\&quot; />\n          </mxGeometry>\n        </mxCell>\n        <mxCell id=\&quot;axis-v-top\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; style=\&quot;endArrow=open;endSize=6;strokeColor=#333333;strokeWidth=1.5;endFill=0;\&quot; value=\&quot;\&quot;>\n          <mxGeometry height=\&quot;10\&quot; width=\&quot;10\&quot; x=\&quot;440\&quot; y=\&quot;120\&quot; as=\&quot;geometry\&quot;>\n            <mxPoint x=\&quot;440\&quot; y=\&quot;120\&quot; as=\&quot;sourcePoint\&quot; />\n            <mxPoint x=\&quot;440\&quot; y=\&quot;82\&quot; as=\&quot;targetPoint\&quot; />\n          </mxGeometry>\n        </mxCell>\n        <mxCell id=\&quot;axis-v-bottom\&quot; edge=\&quot;1\&quot; parent=\&quot;1\&quot; style=\&quot;endArrow=open;endSize=6;strokeColor=#333333;strokeWidth=1.5;endFill=0;\&quot; value=\&quot;\&quot;>\n          <mxGeometry height=\&quot;10\&quot; width=\&quot;10\&quot; x=\&quot;440\&quot; y=\&quot;570\&quot; as=\&quot;geometry\&quot;>\n            <mxPoint x=\&quot;440\&quot; y=\&quot;570\&quot; as=\&quot;sourcePoint\&quot; />\n            <mxPoint x=\&quot;440\&quot; y=\&quot;608\&quot; as=\&quot;targetPoint\&quot; />\n          </mxGeometry>\n        </mxCell>\n        <mxCell id=\&quot;ax-left-label\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=right;fontSize=10;fontColor=#333333;fontStyle=1;\&quot; value=\&quot;Data \u00b7 Content\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;18\&quot; width=\&quot;76\&quot; y=\&quot;330\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;ax-left-sub\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=right;fontSize=8;fontColor=#888888;fontStyle=2;\&quot; value=\&quot;&amp;lt;font style=&amp;quot;font-size: 9px;&amp;quot;&amp;gt;classification \u00b7 governance&amp;lt;/font&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;76\&quot; y=\&quot;348\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;ax-right-label\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;fontColor=#333333;fontStyle=1;\&quot; value=\&quot;Access \u00b7 Network\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;18\&quot; width=\&quot;120\&quot; x=\&quot;806\&quot; y=\&quot;330\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;ax-right-sub\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=2;\&quot; value=\&quot;&amp;lt;font style=&amp;quot;font-size: 9px;&amp;quot;&amp;gt;control \u00b7 routing \u00b7 policy&amp;lt;/font&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;120\&quot; x=\&quot;806\&quot; y=\&quot;348\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;ax-top-label\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#333333;fontStyle=1;\&quot; value=\&quot;Cloud-native \u00b7 Edge-first\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;18\&quot; width=\&quot;200\&quot; x=\&quot;310\&quot; y=\&quot;48\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;ax-top-sub\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=8;fontColor=#888888;fontStyle=2;\&quot; value=\&quot;&amp;lt;font style=&amp;quot;font-size: 9px;&amp;quot;&amp;gt;built from the internet edge inward&amp;lt;/font&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;12\&quot; width=\&quot;220\&quot; x=\&quot;300\&quot; y=\&quot;58\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;ax-bottom-label\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#333333;fontStyle=1;\&quot; value=\&quot;Platform \u00b7 Enterprise-first\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;18\&quot; width=\&quot;200\&quot; x=\&quot;310\&quot; y=\&quot;614\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;ax-bottom-sub\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=8;fontColor=#888888;fontStyle=2;\&quot; value=\&quot;&amp;lt;font style=&amp;quot;font-size: 9px;&amp;quot;&amp;gt;built through convergence and integration&amp;lt;/font&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;12\&quot; width=\&quot;240\&quot; x=\&quot;290\&quot; y=\&quot;630\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;centre-dot\&quot; parent=\&quot;1\&quot; style=\&quot;ellipse;whiteSpace=wrap;html=1;fillColor=#333333;strokeColor=#333333;strokeWidth=1;\&quot; value=\&quot;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;12\&quot; width=\&quot;12\&quot; x=\&quot;434\&quot; y=\&quot;339\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q1-bg\&quot; parent=\&quot;1\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;arcSize=0;\&quot; value=\&quot;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;263\&quot; width=\&quot;358\&quot; x=\&quot;81\&quot; y=\&quot;81\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q1-num\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#cccccc;fontFamily=Courier New;fontStyle=1;\&quot; value=\&quot;01\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;16\&quot; width=\&quot;30\&quot; x=\&quot;90\&quot; y=\&quot;88\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q1-name\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=13;fontStyle=1;fontColor=#111111;\&quot; value=\&quot;Data-first Zero Trust\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;22\&quot; width=\&quot;320\&quot; x=\&quot;90\&quot; y=\&quot;108\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q1-tag\&quot; parent=\&quot;1\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#999999;strokeWidth=0.5;fontColor=#333333;fontSize=9;fontStyle=1;arcSize=6;\&quot; value=\&quot;DLP \u00b7 CASB \u00b7 unstructured data\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;22\&quot; width=\&quot;190\&quot; x=\&quot;90\&quot; y=\&quot;136\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q1-body\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#444444;\&quot; value=\&quot;Architecture built around data visibility and protection. Founding strength in&amp;lt;div&amp;gt;&amp;amp;nbsp;understanding what data is, where it moves, and how to govern it&amp;amp;nbsp;&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;across cloud and SaaS environments.&amp;lt;/div&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;56\&quot; width=\&quot;330\&quot; x=\&quot;90\&quot; y=\&quot;168\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q1-strong-label\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=1;\&quot; value=\&quot;Strongest on:\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;80\&quot; x=\&quot;90\&quot; y=\&quot;228\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q1-strong\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#444444;\&quot; value=\&quot;DLP inspection fidelity \u00b7 CASB inline and API \u00b7 ML classification \u00b7 sensitivity-based policy\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;28\&quot; width=\&quot;328\&quot; x=\&quot;90\&quot; y=\&quot;242\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q1-fit\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=3;\&quot; value=\&quot;Best fit: data protection \u00b7 compliance obligations \u00b7 regulated sectors\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;330\&quot; x=\&quot;90\&quot; y=\&quot;278\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q2-bg\&quot; parent=\&quot;1\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;arcSize=0;\&quot; value=\&quot;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;263\&quot; width=\&quot;358\&quot; x=\&quot;441\&quot; y=\&quot;81\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q2-num\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#cccccc;fontFamily=Courier New;fontStyle=1;\&quot; value=\&quot;02\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;16\&quot; width=\&quot;30\&quot; x=\&quot;452\&quot; y=\&quot;88\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q2-name\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=13;fontStyle=1;fontColor=#111111;\&quot; value=\&quot;Edge-first Zero Trust\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;22\&quot; width=\&quot;320\&quot; x=\&quot;452\&quot; y=\&quot;108\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q2-tag\&quot; parent=\&quot;1\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#999999;strokeWidth=0.5;fontColor=#333333;fontSize=9;fontStyle=1;arcSize=6;\&quot; value=\&quot;PoP performance \u00b7 WAN \u00b7 private backbone\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;22\&quot; width=\&quot;220\&quot; x=\&quot;452\&quot; y=\&quot;136\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q2-body\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#444444;\&quot; value=\&quot;Architecture built from the internet edge inward. Founding strength in delivering&amp;amp;nbsp;&amp;lt;div&amp;gt;security enforcement at the point where user traffic meets the internet&amp;amp;nbsp;&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;\u2014 low latency, high performance, global PoP density.&amp;lt;/div&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;56\&quot; width=\&quot;330\&quot; x=\&quot;452\&quot; y=\&quot;168\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q2-strong-label\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=1;\&quot; value=\&quot;Strongest on:\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;80\&quot; x=\&quot;452\&quot; y=\&quot;228\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q2-strong\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#444444;\&quot; value=\&quot;Internet access performance \u00b7 HTTP/3 traffic \u00b7 global PoP coverage \u00b7&amp;amp;nbsp;&amp;lt;div&amp;gt;private backbone \u00b7 WAN transformation&amp;lt;/div&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;28\&quot; width=\&quot;328\&quot; x=\&quot;452\&quot; y=\&quot;242\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q2-fit\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=3;\&quot; value=\&quot;Best fit: distributed workforce \u00b7 internet access control \u00b7 WAN transformation\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;330\&quot; x=\&quot;452\&quot; y=\&quot;278\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q3-bg\&quot; parent=\&quot;1\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;arcSize=0;\&quot; value=\&quot;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;263\&quot; width=\&quot;358\&quot; x=\&quot;81\&quot; y=\&quot;346\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q3-num\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#cccccc;fontFamily=Courier New;fontStyle=1;\&quot; value=\&quot;03\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;16\&quot; width=\&quot;30\&quot; x=\&quot;90\&quot; y=\&quot;354\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q3-name\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=13;fontStyle=1;fontColor=#111111;\&quot; value=\&quot;Platform-first Zero Trust\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;22\&quot; width=\&quot;320\&quot; x=\&quot;90\&quot; y=\&quot;374\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q3-tag\&quot; parent=\&quot;1\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#999999;strokeWidth=0.5;fontColor=#333333;fontSize=9;fontStyle=1;arcSize=6;\&quot; value=\&quot;consolidation \u00b7 cross-domain \u00b7 single console\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;22\&quot; width=\&quot;220\&quot; x=\&quot;90\&quot; y=\&quot;402\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q3-body\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#444444;\&quot; value=\&quot;Architecture built through convergence \u2014 acquired or developed capabilities across&amp;lt;div&amp;gt;&amp;amp;nbsp;all SSE and SASE domains, unified under a single management platform.&amp;amp;nbsp;&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;One policy console, one data model, native integration with&amp;amp;nbsp;&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;broader security operations.&amp;lt;/div&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;56\&quot; width=\&quot;330\&quot; x=\&quot;88\&quot; y=\&quot;434\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q3-strong-label\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=1;\&quot; value=\&quot;Strongest on:\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;80\&quot; x=\&quot;90\&quot; y=\&quot;494\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q3-strong\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#444444;\&quot; value=\&quot;Platform consolidation \u00b7 cross-domain policy \u00b7 SOC integration \u00b7 single vendor relationship\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;28\&quot; width=\&quot;328\&quot; x=\&quot;90\&quot; y=\&quot;508\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q3-fit\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=3;\&quot; value=\&quot;Best fit: vendor consolidation \u00b7 operational simplicity \u00b7 unified security stack\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;330\&quot; x=\&quot;90\&quot; y=\&quot;544\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q4-bg\&quot; parent=\&quot;1\&quot; style=\&quot;rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=none;arcSize=0;\&quot; value=\&quot;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;263\&quot; width=\&quot;358\&quot; x=\&quot;441\&quot; y=\&quot;346\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q4-num\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#cccccc;fontFamily=Courier New;fontStyle=1;\&quot; value=\&quot;04\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;16\&quot; width=\&quot;30\&quot; x=\&quot;452\&quot; y=\&quot;354\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q4-name\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=13;fontStyle=1;fontColor=#111111;\&quot; value=\&quot;Access-first Zero Trust\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;22\&quot; width=\&quot;320\&quot; x=\&quot;452\&quot; y=\&quot;374\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q4-tag\&quot; parent=\&quot;1\&quot; style=\&quot;rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#999999;strokeWidth=0.5;fontColor=#333333;fontSize=9;fontStyle=1;arcSize=6;\&quot; value=\&quot;policy depth \u00b7 inspection fidelity \u00b7 scale\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;22\&quot; width=\&quot;210\&quot; x=\&quot;452\&quot; y=\&quot;402\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q4-body\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=9;fontColor=#444444;\&quot; value=\&quot;Architecture evolved from enterprise access control \u2014 proxy-based SWG and CASB&amp;amp;nbsp;&amp;lt;div&amp;gt;as the foundational layer, ZTNA built on top. Strength in policy enforcement depth&amp;lt;/div&amp;gt;&amp;lt;div&amp;gt;&amp;amp;nbsp;and traffic inspection fidelity at scale.&amp;lt;/div&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;56\&quot; width=\&quot;330\&quot; x=\&quot;452\&quot; y=\&quot;434\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q4-strong-label\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=1;\&quot; value=\&quot;Strongest on:\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;80\&quot; x=\&quot;452\&quot; y=\&quot;494\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q4-strong\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#444444;\&quot; value=\&quot;Policy granularity \u00b7 traffic inspection accuracy \u00b7 large-scale enterprise access governance&amp;lt;div&amp;gt;&amp;amp;nbsp;\u00b7 mature operational tooling&amp;lt;/div&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;28\&quot; width=\&quot;328\&quot; x=\&quot;452\&quot; y=\&quot;508\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;q4-fit\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=3;\&quot; value=\&quot;Best fit: complex access governance \u00b7 large heterogeneous user population&amp;lt;div&amp;gt;&amp;amp;nbsp;\u00b7 inspection depth&amp;lt;/div&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;330\&quot; x=\&quot;452\&quot; y=\&quot;544\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;fn-divider\&quot; parent=\&quot;1\&quot; style=\&quot;line;strokeColor=#dddddd;strokeWidth=1;\&quot; value=\&quot;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;10\&quot; width=\&quot;720\&quot; x=\&quot;80\&quot; y=\&quot;652\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;fn1\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=2;\&quot; value=\&quot;&amp;lt;font style=&amp;quot;font-size: 9px;&amp;quot;&amp;gt;Philosophy indicates where the deepest capability lives \u2014 not where capability is absent. Every major platform covers all four domains.&amp;lt;/font&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;600\&quot; x=\&quot;80\&quot; y=\&quot;662\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n        <mxCell id=\&quot;fn2\&quot; parent=\&quot;1\&quot; style=\&quot;text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=8;fontColor=#888888;fontStyle=2;\&quot; value=\&quot;&amp;lt;font style=&amp;quot;font-size: 9px;&amp;quot;&amp;gt;For mixed-requirement organisations: identify the dominant risk domain first. The vendor whose philosophy aligns with that domain requires less configuration effort where it matters most.&amp;lt;/font&amp;gt;\&quot; vertex=\&quot;1\&quot;>\n          <mxGeometry height=\&quot;14\&quot; width=\&quot;700\&quot; x=\&quot;80\&quot; y=\&quot;678\&quot; as=\&quot;geometry\&quot; />\n        </mxCell>\n      </root>\n    </mxGraphModel>\n  &quot;}"></div>
@@ -2822,6 +2914,70 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
     <p>An exception register does not need to be complex. The minimum: exception description, affected component (SWG bypass / ZTNA scope / DLP rule / CASB allowlist), business justification, risk assessment (what does this exception expose, and how does it expand the attack surface?), named owner, approval date, expiry date, and review cycle. An exception without an expiry date is not a managed exception — it is a permanent gap waiting to be discovered.</p>
   </div>
 
+
+  <h3>Governance as the Zero Trust maturity custodian</h3>
+
+  <p>Section 2 introduced the CISA Zero Trust Maturity Model as the baseline self-assessment instrument — five pillars, four stages, and three cross-cutting capabilities, of which Governance is one. That assessment is only useful if something owns the journey it describes. Without an owner, an organisation completes the maturity baseline once at programme start, reaches an initial level of capability, and the assessment becomes a historical artefact rather than a living measurement.</p>
+
+  <p>The governance function is that owner. It holds three specific responsibilities for the maturity journey:</p>
+
+  <div class="gov-grid">
+    <div class="gov-item">
+      <h4>Quarterly coverage metric review</h4>
+      <p>The enforcement gap metrics (below) are reviewed quarterly — not the capability inventory, but what is actually enforcing versus what is configured. This is the leading indicator that surfaces drift between stages before the annual reassessment captures it.</p>
+    </div>
+    <div class="gov-item">
+      <h4>Annual full CISA pillar reassessment</h4>
+      <p>The five-pillar maturity grid from Section 2 is reassessed annually against the same CISA stage definitions used at baseline. Movement from Traditional to Initial, or Initial to Advanced, per pillar is the programme's measurable security outcome — expressed in a recognised framework that translates to board and audit audiences.</p>
+    </div>
+    <div class="gov-item">
+      <h4>The maturity roadmap</h4>
+      <p>For each pillar, the governance function maintains a current-state-to-target-state roadmap: where the organisation sits today, where it needs to reach next, and what programme work closes that gap. This roadmap is the structured input to CISO and board reporting referenced earlier in this section — not a vendor dashboard screenshot, but a defensible position on programme trajectory.</p>
+    </div>
+  </div>
+
+  <h3>SIEM integration and the policy refinement loop</h3>
+
+  <p>NIST SP 800-207 §4.2 describes the role of continuous diagnostics and security analytics in a Zero Trust architecture: <em>"This collects security-centric information for later analysis. This data is then used to refine policies and warn of possible attacks against enterprise assets."</em> The SIEM is where this happens. It sits between enforcement and policy refinement — the loop that determines whether Zero Trust improves over time or quietly degrades.</p>
+
+  <p>The SSE platform generates structured telemetry continuously: access logs, threat detections, policy violation events, anomalous session signals. On its own, this telemetry answers "what happened in this session." Aggregated in a SIEM alongside EDR, identity, and network telemetry, it answers two different questions:</p>
+
+  <div class="fwaas-grid">
+    <div class="fwaas-item">
+      <h4>Threat detection</h4>
+      <p>Cross-source correlation surfaces patterns that no single telemetry source shows alone — a compromised credential used for an unusual ZTNA access pattern at an unusual hour, combined with an EDR alert on the same endpoint, combined with a DLP policy violation on the same session. Each signal individually might be below an alerting threshold. Correlated, they indicate an active attack or lateral movement.</p>
+    </div>
+    <div class="fwaas-item">
+      <h4>Policy refinement inputs</h4>
+      <p>The same telemetry, viewed over weeks rather than sessions, reveals where policy is miscalibrated — DLP rules generating consistent false positives from a specific application, ZTNA scopes broader than actual usage patterns justify, URL categories blocking destinations that a specific team legitimately needs. This is the input to the periodic policy audit described earlier in this section.</p>
+    </div>
+  </div>
+
+  <p>The loop is: <strong>SSE telemetry → SIEM aggregation → analysis → policy review → PDP policy update → improved enforcement</strong>. Most organisations configure the telemetry export once at deployment and never close the loop — the SIEM receives logs, but no process feeds findings back into policy. The loop only functions if the governance function's periodic policy audit explicitly consumes SIEM findings as an input, not just incident investigation output.</p>
+
+  <p>One detection capability specifically depends on this loop: UEBA (User and Entity Behaviour Analytics) running in the SIEM identifies anomalies <em>across</em> sessions — a user whose individual sessions each look unremarkable, but whose aggregate pattern (access times, data volumes, applications used, geographic spread) deviates from their established baseline. The PDP evaluates per-session and cannot see this. The SIEM is the only layer with the cross-session view required to catch it.</p>
+
+  <p><strong>Vendor SIEM integration paths:</strong> Zscaler provides native connectors for Splunk, Microsoft Sentinel, IBM QRadar, and Sumo Logic — ZIA and ZPA logs available as structured data. Netskope Cloud Exchange provides bidirectional SIEM/SOAR integration — telemetry out, threat intelligence in. Palo Alto Cortex XSIAM/XSOAR offers the tightest integration with Prisma Access telemetry specifically. Cloudflare Logpush sends structured logs to any SIEM destination. The integration exists at every major vendor — the governance discipline of acting on what it surfaces is what is typically missing.</p>
+
+  <h3>Coverage metrics — the honest maturity indicator</h3>
+
+  <p>Programme reporting should distinguish two different things: <em>capability</em> — which controls are deployed, which licences are active, which policies exist — and <em>coverage</em> — the gap between configured controls and controls actively enforcing. Capability metrics describe what has been built. Coverage metrics describe what is working. Both matter, but coverage is the one that tells the governance function whether the programme is delivering its intended outcome.</p>
+
+  <p>This distinction recurs throughout this guide — agent deployed versus agent enforcing, DLP configured versus DLP enforcing versus alert-only, ZTNA connectors built versus applications actually migrated off VPN. The governance function should track these as a standing weekly or monthly metric set, not as a one-time deployment checklist:</p>
+
+  <table class="ref-table-wrap" style="width:100%;border-collapse:collapse;margin:20px 0;">
+    <thead><tr style="background:var(--navy);color:var(--white);"><th style="padding:10px 14px;text-align:left;font-size:12.5px;">Metric</th><th style="padding:10px 14px;text-align:left;font-size:12.5px;">What it reveals</th></tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--grey-rule);"><td style="padding:10px 14px;font-size:13px;font-weight:600;">SSE agent enforcement rate</td><td style="padding:10px 14px;font-size:13px;">Devices with the agent installed vs. devices where it is actively enforcing — the gap is an unmonitored coverage hole, not a deployment statistic.</td></tr>
+      <tr style="border-bottom:1px solid var(--grey-rule);background:var(--slate);"><td style="padding:10px 14px;font-size:13px;font-weight:600;">ZTNA application coverage rate</td><td style="padding:10px 14px;font-size:13px;">Applications behind ZTNA connectors vs. applications still reachable via VPN or direct network access — the real state of the VPN migration, not the connector build count.</td></tr>
+      <tr style="border-bottom:1px solid var(--grey-rule);"><td style="padding:10px 14px;font-size:13px;font-weight:600;">DLP enforcement rate (vs. alert-only)</td><td style="padding:10px 14px;font-size:13px;">Policies in enforcement mode vs. policies still in the alert-only tuning phase from Section 7 — a programme can remain in alert-only indefinitely without this metric surfacing it.</td></tr>
+      <tr style="background:var(--slate);"><td style="padding:10px 14px;font-size:13px;font-weight:600;">Exception register health</td><td style="padding:10px 14px;font-size:13px;">Proportion of active exceptions with a current owner, a documented justification, and an unexpired review date — the leading indicator of policy drift described earlier in this section.</td></tr>
+    </tbody>
+  </table>
+
+  <p>None of these metrics require new tooling — they are derivable from data the SSE platform and SIEM already hold. What they require is a governance function that asks the coverage question rather than the capability question, on a fixed cadence, and treats a widening gap as the signal that programme maturity is regressing — not as an operational footnote.</p>
+
+
   <h2>Expansion 1 — OT/IoT: The Device Without Identity</h2>
 
   <div class="expansion-card ot">
@@ -2942,7 +3098,7 @@ code{font-family:var(--font-mono);font-size:12px;background:var(--slate);padding
   </div>
 
   <div class="outreach-block">
-    <p>This guide reflects a practitioners framework that works in practice. If your implementation experience challenges any of the positions taken here — or if you are working through a specific constraint not addressed — I would welcome the conversation.</p>
+    <p>This guide reflects architecture decisions made in production environments across regulated sectors. If your implementation experience challenges any of the positions taken here — or if you are working through a specific constraint not addressed — I would welcome the conversation.</p>
     <p><a href="https://www.linkedin.com/in/csanareshpoojary/" target="_blank" rel="noopener">Connect on LinkedIn — Naresh Padma Poojary</a></p>
   </div>
   <div class="section-nav">
